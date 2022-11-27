@@ -1,0 +1,18 @@
+{% extends 'cadreSS.html' %}
+{% block section %}
+    <h1>Tu as déjà rempli le formulaire, cependant tu peux toujours le modifier.</h1>
+
+    {% if infos.fauxEmail %}
+    <h2 id="fauxEmail">L'email renseigné n'est pas valide.</h2>
+    {% endif %}
+
+    <form action="/SecretSanta" method="POST">
+        <label>Adresse email : 
+            <input type="text" name="email" value={{ infos.email }}>
+        </label>
+        <label>Participes-tu ?
+            <input type="checkbox" name="reponse">
+        </label>
+            <input type="submit" value="Envoyer">
+    </form>
+{% endblock %}

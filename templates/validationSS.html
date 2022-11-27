@@ -1,0 +1,18 @@
+{% extends 'cadreSS.html' %}
+{% block section %}
+    <h1>Renseigne ton adresse et si tu participes pour le tirage au sort.</h1>
+
+    {% if infos.fauxEmail %}
+    <h2 id="fauxEmail">L'email renseigné n'est pas valide.</h2>
+    {% endif %}
+
+    <form action="/SecretSanta" method="POST">
+        <label>Adresse email : 
+            <input type="text" name="email" value={{ infos.email }}>
+        </label>
+        <label>Participes-tu ?
+            <input type="checkbox" name="reponse">
+        </label>
+            <input type="submit" value="Envoyer">
+    </form>
+{% endblock %}
