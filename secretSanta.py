@@ -1,45 +1,50 @@
 from json import load, dump
-from flask import template
+from random import randint
+
+
+def envoyerMail(secretSanta, participant):
+    print(f"Bravo {secretSanta}, tu es le secret Santa de {participant}.")
 
 
 def tirageAuSort():
     with open('participants.json') as fichierJson:
-        listeParticipants = load(fichierJson)
+        dicoParticipants = load(fichierJson)
 
     peutCommencer = True
-    for confirmation in listeParticipants.values():
+    for confirmation in dicoParticipants.values():
         if confirmation is None:
             peutCommencer = False
 
     if peutCommencer:
-        for participants in listeParticipants:
-            pass
+        listeParticipants = list(dicoParticipants)
+        for participant in dicoParticipants:
+            envoyerMail(participant, listeParticipants.pop(randint(0, len(listeParticipants) - 1)))
 
 
 def validation(participant, réponse):
     with open('participants.json') as fichierJson:
-        listeParticipants = load(fichierJson)
+        dicoParticipants = load(fichierJson)
     
-    if listeParticipants[participant] is not None:
+    if dicoParticipants[participant] is not None:
         return "déjàValidé"
     else:
-        listeParticipants[participant] = réponse
+        dicoParticipants[participant] = réponse
 
     with open('participants.json', 'w') as fichierJson:
-        dump(listeParticipants, fichierJson)
+        dump(dicoParticipants, fichierJson)
 
     tirageAuSort()
 
 
-def resetListeParticipants(participant = None):
+def resetDicoParticipants(participant = None):
     with open('participants.json') as fichierJson:
-        listeParticipants = load(fichierJson)
+        dicoParticipants = load(fichierJson)
     
     if participant is not None:
-        listeParticipants[participant] = None
+        dicoParticipants[participant] = None
     else:
-        for participant in listeParticipants:
-            listeParticipants[participant] = None
+        for participant in dicoParticipants:
+            dicoParticipants[participant] = None
 
     with open('participants.json', 'w') as fichierJson:
-        dump(listeParticipants, fichierJson)
+        dump(dicoParticipants, fichierJson)
