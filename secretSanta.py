@@ -48,3 +48,18 @@ def resetDicoParticipants(participant = None):
 
     with open('participants.json', 'w') as fichierJson:
         dump(dicoParticipants, fichierJson)
+
+
+def enregistrerEmail(utilisateur, email):
+    if len(email) < 10:
+        return False
+    elif not "@" in email[1:]:
+        return False
+    elif email[-4::] != ".com" and email[-3::] != ".fr":
+        return False
+    else:
+        with open('emails.json') as fichierJson:
+            dicoEmails = load(fichierJson)
+            dicoEmails[utilisateur] = email
+        with open('emails.json', 'w') as fichierJson:
+            dump(dicoEmails, fichierJson)
