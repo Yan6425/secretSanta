@@ -10,3 +10,8 @@ titre {
     margin: 0; 
     font-family: 'Georgia', serif; 
 }
+
+a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
