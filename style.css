@@ -1,17 +1,28 @@
 header {
     background-color: #af3430; 
     color: #fff; 
-    text-align: center; 
-    padding: 20px; 
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 titre {
+    align-self: center;
     font-size: 2em; 
-    margin: 0; 
     font-family: 'Georgia', serif; 
+}
+
+#deconnexion {
+    display: none;
+    width: 8em;
+    align-self: flex-end;
 }
 
 a:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+button:hover {
+    cursor: pointer;
 }
