@@ -56,10 +56,6 @@ chargerPage("../templates/admin.html")
 
 document.getElementById("deconnexion").addEventListener("click", deconnexion);
 
-function accueil(){
-  connexion();
-}
-
 function admin(){
   sectionTemplate.innerHTML = pages["admin"];
 }
@@ -85,6 +81,7 @@ function inscription(){
 
 function mdpOublie(){
     sectionTemplate.innerHTML = pages["mdpOublie"];
+    document.getElementById("retour").addEventListener("click", connexion);
 }
 
 function verifMail(){
