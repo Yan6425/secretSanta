@@ -39,3 +39,9 @@ a:hover {
 button:hover {
     cursor: pointer;
 }
+
+/*connexion.php*/
+#incorrect {
+    color: red;
+    display: none;
+}

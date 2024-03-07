@@ -1,3 +1,4 @@
 {
-    "Admin" : {"mdp" : null, "mail" : null, "secretEnfant" : null}
+    "Admin" : {"mdp" : "Admin", "mail" : "admin@secretSanta.fr", "secretEnfant" : null},
+    "Bob" : {"mdp" : "Bob", "mail" : "bob@secretSanta.fr", "secretEnfant" : null}
 }

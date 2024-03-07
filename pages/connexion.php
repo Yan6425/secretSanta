@@ -5,8 +5,13 @@ if (isset($_SESSION["pseudo"])){
 }
 include "../header.html"
 ?>
+<span id ="incorrect">Identifiants incorrects.</span>
+<form id="connexion">
+    <input type="text" name="pseudo" placeholder="Entrez votre pseudo">
+    <input type="password" name="mdp" placeholder="Entrez votre mot de passe">
+    <button type="submit">Connexion</button>
+</form>
 <a id="mdpOublie">Mot de passe oublie</a>
-<button id="verifIdentifiants">Connexion</button>
 <?php
 include "../footer.html"
 ?>

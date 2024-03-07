@@ -1,40 +1,26 @@
-function accueil(){
-    if (lireCookie("utilisateur")){
-        enAttente();
-    }
-    else {
-        connexion();
-    }
-}  
-
-function deconnexion(){
-    supprimerCookie("utilisateur");
-    connexion();
-}
-
-function verifIdentifiants(utilisateur){
-    creerCookie("utilisateur", utilisateur);
-    document.getElementById("deconnexion").style.display = "block";
-    enAttente();
-}
-
-function creerCookie(key, value) {
-    const cookieOptions = {
-        path: '/',
-        sameSite: 'Lax',
-        expires: 0
-    };
-
-    const cookieString = `${key}=${value}; ${Object.entries(cookieOptions).map(([k, v]) => `${k}=${v}`).join('; ')}`;
-    document.cookie = cookieString;
-}
-
-function lireCookie(key) {
-    const cookies = document.cookie.split("; ").map(cookie => cookie.split("="));
-    const cookie = cookies.find(cookie => cookie[0] === key);
-    return cookie ? cookie[1] : null;
-}
-
-function supprimerCookie(key) {
-    document.cookie = `${key}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+if (window.location.href == "pages/connexion.php"){
+    const form = document.getElementById("connexion");
+    form.addEventListener("submit", event => {
+        console.log("bouton cliqué");
+        event.preventDefault();
+        const data = new FormData(event.target);
+        console.log(data);
+        fetch("scripts/verifIdentifiants.php", {
+            method: "POST",
+            body: data
+        })
+        .then(response => response.text())
+        .then(result => {
+            console.log(result);
+            if (result == "true") {
+                window.location.href = "pages/index.php";
+            }
+            else {
+                document.getElementById("incorrect").style.display = "block";
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    });
 }
