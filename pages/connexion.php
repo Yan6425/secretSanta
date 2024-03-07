@@ -1,13 +1,7 @@
 <?php
 session_start();
-$parametres = json_decode(file_get_contents("../parametres.json"), true);
 if (isset($_SESSION["pseudo"])){
-    if ($parametres["tirageFait"]){
-        header("Location: devoiler.php");
-    }
-    else {
-        header("Location: enAttente.php");
-    }
+    header("Location: ../index.php");
 }
 include "../header.html"
 ?>
