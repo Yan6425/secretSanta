@@ -9,7 +9,7 @@ include "../header.html"
 <form id="connexion">
     <input type="text" name="pseudo" placeholder="Entrez votre pseudo">
     <input type="password" name="mdp" placeholder="Entrez votre mot de passe">
-    <button type="submit">Connexion</button>
+    <button type="submit" onclick="connexion()">Connexion</button>
 </form>
 <a id="mdpOublie">Mot de passe oublie</a>
 <?php
