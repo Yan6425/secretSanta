@@ -45,3 +45,7 @@ button:hover {
     color: red;
     display: none;
 }
+
+#boutonInscription {
+    display: none;
+}

@@ -39,4 +39,10 @@ function deconnexion() {
     .catch(error => {
     console.error('Erreur lors de la déconnexion :', error);
     });
-  }
+}
+
+function verifMail(){
+    event.preventDefault();
+    document.getElementById("verifMail").style.display = "none";
+    document.getElementById("boutonInscription").style.display = "block";
+}
