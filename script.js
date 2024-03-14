@@ -46,3 +46,38 @@ function verifMail(){
     document.getElementById("verifMail").style.display = "none";
     document.getElementById("boutonInscription").style.display = "block";
 }
+
+function inscription(){
+    event.preventDefault();
+    const data = new FormData(document.getElementById("inscription"));
+    fetch("../scripts/identifiantsUniques.php", {
+        method: "POST",
+        body: data
+    })
+    .then(response => response.text())
+    .then(result => {
+        if (result == "false") {
+            document.getElementById("incorrect").style.display = "block";
+            return;
+        }
+    })
+    .catch(error => {
+        console.error(error);
+    });
+    fetch("../scripts/envoyerMail.php", {
+        method: "POST",
+        body: data
+    })
+    .then(response => response.text())
+    .then(result => {
+        if (result == "true") {
+            document.getElementById("mailEnvoye").style.display = "block";
+        }
+        else if (result == "false") {
+            document.getElementById("mailIncorrect").style.display = "block";
+        }
+    })
+    .catch(error => {
+        console.error(error);
+    });
+}
