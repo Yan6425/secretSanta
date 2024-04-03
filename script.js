@@ -41,12 +41,6 @@ function deconnexion() {
     });
 }
 
-function verifMail(){
-    event.preventDefault();
-    document.getElementById("verifMail").style.display = "none";
-    document.getElementById("boutonInscription").style.display = "block";
-}
-
 function inscription(){
     event.preventDefault();
     const data = new FormData(document.getElementById("inscription"));
