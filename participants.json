@@ -1,9 +1,57 @@
 {
-    "Admin" : {"mdp" : "Admin", "mail" : "admin@secretSanta.fr"},
-    "Bob" : {"mdp" : "1234", "mail" : "bob@secretSanta.fr", "secretEnfant" : null, "blackList" : {"0" : "Alice"}},
-    "Alice" : {"mdp" : "1234", "mail" : "alice@secretSanta.fr", "secretEnfant" : null, "blackList" : {}},
-    "Gabriel" : {"mdp" : "1234", "mail" : "gabriel@secretSanta.fr", "secretEnfant" : null, "blackList" : {}},
-    "Sylvain" : {"mdp" : "1234", "mail" : "Sylvain@secretSanta.fr", "secretEnfant" : null, "blackList" : {}},
-    "Maël" : {"mdp" : "1234", "mail" : "maël@secretSanta.fr", "secretEnfant" : null, "blackList" : {}},
-    "Quentin" : {"mdp" : "1234", "mail" : "quentin@secretSanta.fr", "secretEnfant" : null, "blackList" : {"0" : "Sylvain", "1" : "Maël"}}
+    "Admin": {
+        "mdp": "Admin",
+        "mail": "admin@secretSanta.fr"
+    },
+    "Bob": {
+        "mdp": "1234",
+        "mail": "bob@secretSanta.fr",
+        "secretEnfant": null,
+        "blackList": [
+            "Bob",
+            "Alice"
+        ]
+    },
+    "Alice": {
+        "mdp": "1234",
+        "mail": "alice@secretSanta.fr",
+        "secretEnfant": null,
+        "blackList": [
+            "Alice"
+        ]
+    },
+    "Gabriel": {
+        "mdp": "1234",
+        "mail": "gabriel@secretSanta.fr",
+        "secretEnfant": null,
+        "blackList": [
+            "Gabriel"
+        ]
+    },
+    "Sylvain": {
+        "mdp": "1234",
+        "mail": "Sylvain@secretSanta.fr",
+        "secretEnfant": null,
+        "blackList": [
+            "Sylvain"
+        ]
+    },
+    "Ma\u00ebl": {
+        "mdp": "1234",
+        "mail": "ma\u00ebl@secretSanta.fr",
+        "secretEnfant": null,
+        "blackList": [
+            "Ma\u00ebl"
+        ]
+    },
+    "Quentin": {
+        "mdp": "1234",
+        "mail": "quentin@secretSanta.fr",
+        "secretEnfant": null,
+        "blackList": [
+            "Quentin",
+            "Sylvain",
+            "Ma\u00ebl"
+        ]
+    }
 }
