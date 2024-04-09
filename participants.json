@@ -10,7 +10,8 @@
         "blackList": [
             "Bob",
             "Alice"
-        ]
+        ],
+        "banni": false
     },
     "Alice": {
         "mdp": "1234",
@@ -18,7 +19,8 @@
         "secretEnfant": null,
         "blackList": [
             "Alice"
-        ]
+        ],
+        "banni": false
     },
     "Gabriel": {
         "mdp": "1234",
@@ -26,7 +28,8 @@
         "secretEnfant": null,
         "blackList": [
             "Gabriel"
-        ]
+        ],
+        "banni": false
     },
     "Sylvain": {
         "mdp": "1234",
@@ -34,7 +37,8 @@
         "secretEnfant": null,
         "blackList": [
             "Sylvain"
-        ]
+        ],
+        "banni": false
     },
     "Ma\u00ebl": {
         "mdp": "1234",
@@ -42,7 +46,8 @@
         "secretEnfant": null,
         "blackList": [
             "Ma\u00ebl"
-        ]
+        ],
+        "banni": false
     },
     "Quentin": {
         "mdp": "1234",
@@ -52,6 +57,7 @@
             "Quentin",
             "Sylvain",
             "Ma\u00ebl"
-        ]
+        ],
+        "banni": false
     }
 }
