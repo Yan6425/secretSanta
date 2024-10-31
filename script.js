@@ -7,7 +7,7 @@ if (["admin.php", "devoiler.php", "enAttente.php"].some(page => window.location.
 function connexion(){
     event.preventDefault();
     const data = new FormData(document.getElementById("connexion"));
-    fetch("../scripts/verifIdentifiants.php", {
+    fetch("../fonctions/verifIdentifiants.php", {
         method: "POST",
         body: data
     })
@@ -26,7 +26,7 @@ function connexion(){
 }
 
 function deconnexion() {
-    fetch("../scripts/deconnecter.php")
+    fetch("../fonctions/deconnecter.php")
     .then(response => {
     if (!response.ok) {
         throw new Error(`Erreur HTTP : ${response.status}`);
@@ -44,7 +44,7 @@ function deconnexion() {
 function inscription(){
     event.preventDefault();
     const data = new FormData(document.getElementById("inscription"));
-    fetch("../scripts/identifiantsUniques.php", {
+    fetch("../fonctions/identifiantsUniques.php", {
         method: "POST",
         body: data
     })
@@ -58,7 +58,7 @@ function inscription(){
     .catch(error => {
         console.error(error);
     });
-    fetch("../scripts/envoyerMail.php", {
+    fetch("../fonctions/envoyerMail.php", {
         method: "POST",
         body: data
     })
