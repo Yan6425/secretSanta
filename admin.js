@@ -1,5 +1,5 @@
 function lancerTirage(){
-    fetch("../scripts/lancerTirage.php")
+    fetch("../fonctions/lancerTirage.php")
     .then(response => {
     if (!response.ok) {
         throw new Error(`Erreur HTTP : ${response.status}`);
@@ -12,7 +12,7 @@ function lancerTirage(){
 }
 
 function annulerTirage(){
-    fetch("../scripts/annulerTirage.php")
+    fetch("../fonctions/annulerTirage.php")
     .then(response => {
     if (!response.ok) {
         throw new Error(`Erreur HTTP : ${response.status}`);
