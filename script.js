@@ -44,42 +44,50 @@ function deconnexion() {
 function inscription(){
     event.preventDefault();
     const data = new FormData(document.getElementById("inscription"));
-    if (data.get("pseudo") == "") {
-        document.getElementById("pseudoIncorrect").className = "invalide";
-    }
-    else {
-        fetch("../fonctions/identifiantsUniques.php", {
+    document.getElementById("mdpIncorrect").className = "invisible";
+    document.getElementById("pseudoIncorrect").className = "invisible";
+    document.getElementById("mailIncorrect").className = "invisible";
+    fetch("../fonctions/pseudoValide.php", {
+        method: "POST",
+        body: data
+    })
+    .then(response => response.text())
+    .then(result => {
+        if (result == "false") {
+            document.getElementById("pseudoIncorrect").className = "invalide";
+        }
+        else {
+            fetch("../fonctions/mdpValide.php", {
             method: "POST",
             body: data
-        })
-        .then(response => response.text())
-        .then(result => {
-            if (result == "false") {
-                document.getElementById("pseudoIncorrect").className = "invalide";
-            }
-            else {
-                document.getElementById("pseudoIncorrect").className = "invisible";
-                fetch("../fonctions/envoyerMail.php", {
-                    method: "POST",
-                    body: data
-                })
-                .then(response => response.text())
-                .then(result => {
-                    if (result == "true") {
-                        document.getElementById("mailEnvoye").className = "valide";
-                        document.getElementById("mailIncorrect").className = "invisible";
-                    }
-                    else if (result == "false") {
-                        document.getElementById("mailIncorrect").className = "invalide";
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-            }
-        })
-        .catch(error => {
-            console.error(error);
-        })
-    }
+            })
+            .then(response => response.text())
+            .then(result => {
+                if (result == "false") {
+                    document.getElementById("mdpIncorrect").className = "invalide";
+                }
+                else {
+                    fetch("../fonctions/envoyerMail.php", {
+                        method: "POST",
+                        body: data
+                    })
+                    .then(response => response.text())
+                    .then(result => {
+                        if (result == "true") {
+                            document.getElementById("mailEnvoye").className = "valide";
+                        }
+                        else if (result == "false") {
+                            document.getElementById("mailIncorrect").className = "invalide";
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+                }
+            })
+        }
+    })
+    .catch(error => {
+        console.error(error);
+    })
 }
