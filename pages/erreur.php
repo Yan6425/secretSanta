@@ -1,4 +1,4 @@
 <?php include "../header.html" ?>
 chef on a un problème
-<a href="../index.php">Revenir à l'accueil</a>
+<button onclick="deconnexion()">Revenir à l'accueil</button>
 <?php include "../footer.html" ?>
