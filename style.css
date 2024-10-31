@@ -40,8 +40,14 @@ button:hover {
     cursor: pointer;
 }
 
-/*connexion.php*/
-#incorrect {
-    color: red;
+.invisible {
     display: none;
+}
+
+.invalide {
+    color: red;
+}
+
+.valide {
+    color: green;
 }

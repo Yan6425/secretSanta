@@ -44,34 +44,42 @@ function deconnexion() {
 function inscription(){
     event.preventDefault();
     const data = new FormData(document.getElementById("inscription"));
-    fetch("../fonctions/identifiantsUniques.php", {
-        method: "POST",
-        body: data
-    })
-    .then(response => response.text())
-    .then(result => {
-        if (result == "false") {
-            document.getElementById("incorrect").style.display = "block";
-            return;
-        }
-    })
-    .catch(error => {
-        console.error(error);
-    });
-    fetch("../fonctions/envoyerMail.php", {
-        method: "POST",
-        body: data
-    })
-    .then(response => response.text())
-    .then(result => {
-        if (result == "true") {
-            document.getElementById("mailEnvoye").style.display = "block";
-        }
-        else if (result == "false") {
-            document.getElementById("mailIncorrect").style.display = "block";
-        }
-    })
-    .catch(error => {
-        console.error(error);
-    });
+    if (data.get("pseudo") == "") {
+        document.getElementById("pseudoIncorrect").className = "invalide";
+    }
+    else {
+        fetch("../fonctions/identifiantsUniques.php", {
+            method: "POST",
+            body: data
+        })
+        .then(response => response.text())
+        .then(result => {
+            if (result == "false") {
+                document.getElementById("pseudoIncorrect").className = "invalide";
+            }
+            else {
+                document.getElementById("pseudoIncorrect").className = "invisible";
+                fetch("../fonctions/envoyerMail.php", {
+                    method: "POST",
+                    body: data
+                })
+                .then(response => response.text())
+                .then(result => {
+                    if (result == "true") {
+                        document.getElementById("mailEnvoye").className = "valide";
+                        document.getElementById("mailIncorrect").className = "invisible";
+                    }
+                    else if (result == "false") {
+                        document.getElementById("mailIncorrect").className = "invalide";
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        })
+    }
 }
