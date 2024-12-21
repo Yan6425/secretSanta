@@ -16,7 +16,7 @@
     "Alice": {
         "mdp": "1234",
         "mail": "alice@secretSanta.fr",
-        "secretEnfant": "Sylvain",
+        "secretEnfant": null,
         "blackList": [
             "Alice"
         ],
@@ -25,7 +25,7 @@
     "Gabriel": {
         "mdp": "1234",
         "mail": "gabriel@secretSanta.fr",
-        "secretEnfant": "Alice",
+        "secretEnfant": null,
         "blackList": [
             "Gabriel"
         ],
@@ -34,7 +34,7 @@
     "Sylvain": {
         "mdp": "1234",
         "mail": "Sylvain@secretSanta.fr",
-        "secretEnfant": "Ma\u00ebl",
+        "secretEnfant": null,
         "blackList": [
             "Sylvain"
         ],
@@ -43,7 +43,7 @@
     "Ma\u00ebl": {
         "mdp": "1234",
         "mail": "ma\u00ebl@secretSanta.fr",
-        "secretEnfant": "Gabriel",
+        "secretEnfant": null,
         "blackList": [
             "Ma\u00ebl"
         ],
@@ -52,7 +52,7 @@
     "Quentin": {
         "mdp": "1234",
         "mail": "quentin@secretSanta.fr",
-        "secretEnfant": "Bob",
+        "secretEnfant": null,
         "blackList": [
             "Quentin",
             "Sylvain",

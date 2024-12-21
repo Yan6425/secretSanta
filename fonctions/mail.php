@@ -1,1 +1,0 @@
-Voici le code pour vérifier ton adresse mail : <?php echo $_POST["code"] ?>
