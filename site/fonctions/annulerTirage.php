@@ -1,8 +1,8 @@
 <?php
 $participants = json_decode(file_get_contents("../../participants.json"), true);
-foreach ($participants as $nom => $infos) {
-    if ($nom != "Admin") {
-        $participants[$nom]["secretEnfant"] = null;
+foreach ($participants as $pseudo => $infos) {
+    if ($pseudo != "Admin") {
+        $participants[$pseudo]["secretEnfant"] = null;
     }
 }
 file_put_contents("../../participants.json", json_encode($participants, JSON_PRETTY_PRINT));

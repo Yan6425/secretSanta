@@ -4,8 +4,8 @@ do {
     $tblNoms = array_keys($participants);
     array_splice($tblNoms, 0, 1);
     $boucleInfinie = false;
-    foreach ($participants as $nom => $infos) {
-        if ($nom != "Admin") {
+    foreach ($participants as $pseudo => $infos) {
+        if ($pseudo != "Admin") {
             if (empty(array_diff($tblNoms, $infos["blackList"]))){
                 $boucleInfinie = true;
                 break;
@@ -13,7 +13,7 @@ do {
             do {
                 $i = random_int(0, count($tblNoms)-1);
             } while (in_array($tblNoms[$i], $infos["blackList"]));
-            $participants[$nom]["secretEnfant"] = $tblNoms[$i];
+            $participants[$pseudo]["secretEnfant"] = $tblNoms[$i];
             array_splice($tblNoms, $i, 1);
         }
     }

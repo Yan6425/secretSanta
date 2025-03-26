@@ -24,6 +24,27 @@ function annulerTirage(){
     });
 }
 
+function banDeban(pseudo){
+    // Préparer les données au format POST
+    const data = new FormData();
+    data.append("pseudo", pseudo);
+
+    // Envoi de la requête POST
+    fetch("../fonctions/bannirDebannir.php", {
+        method: "POST",
+        body: data, // FormData gère l'encodage
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+        window.location.reload();
+    })
+    .catch(error => {
+        console.error('Erreur lors du bannissement / débanissement :', error);
+    });
+}
+
 function inscrire(pseudo, mdp, mail) {
     // Préparer les données au format POST
     const data = new FormData();

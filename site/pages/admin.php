@@ -15,11 +15,15 @@ include "../header.html"
         <th>Email</th>
         <th>Secret enfant</th>
     </tr>
-    <?php foreach ($participants as $nom => $infos): ?>
+    <?php foreach ($participants as $pseudo => $infos): ?>
         <tr>
-            <td><?= htmlspecialchars($nom) ?></td>
+            <td><?= htmlspecialchars($pseudo) ?></td>
             <td><?= htmlspecialchars($infos['mail']) ?></td>
-            <td><?= htmlspecialchars($infos['secretEnfant']) ?></td>
+            <?php if ($pseudo != 'Admin'): ?>
+                <td><?= htmlspecialchars($infos['secretEnfant']) ?></td>
+                <td><button onclick="banDeban('<?= $pseudo ?>')"><?= $infos['banni'] ? 'Débannir' : 'Bannir' ?></button></td>
+                <td><button>Blacklist</button></td>
+            <?php endif; ?>
         </tr>
     <?php endforeach; ?>
 </table>
