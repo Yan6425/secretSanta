@@ -11,7 +11,7 @@
             "Bob",
             "Alice"
         ],
-        "banni": false
+        "banni": true
     },
     "Alice": {
         "mdp": "$2y$10$REZSMBLZweZ0FpFIcGicgOHPEDWWA0rnC56qzZ8hQvBxjOyODMCWu",

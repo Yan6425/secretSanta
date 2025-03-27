@@ -5,7 +5,7 @@ do {
     $tblPseudos = array_values(array_diff($tblPseudos, ["Admin"]));
     foreach($participants as $pseudo => $infos) {
         if ($infos["banni"]) {
-            $tblPseudos = array_values(array_diff($tblPseudos, [$peudo]));
+            $tblPseudos = array_values(array_diff($tblPseudos, [$pseudo]));
         }
     }
     $reessayer = false;
