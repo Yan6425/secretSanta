@@ -21,13 +21,19 @@ include "../header.html"
             <td><?= htmlspecialchars($infos['mail']) ?></td>
             <?php if ($pseudo != 'Admin'): ?>
                 <td><?= htmlspecialchars($infos['secretEnfant']) ?></td>
-                <td><button onclick="banDeban('<?= $pseudo ?>')"><?= $infos['banni'] ? 'Débannir' : 'Bannir' ?></button></td>
-                <td><button>Blacklist</button></td>
+                <td><button onclick="banDeban('<?= $pseudo ?>')" id="ban<?= $pseudo ?>"><?= $infos['banni'] ? 'Débannir' : 'Bannir' ?></button></td>
+                <td><button onclick="ouvrirBL('<?= $pseudo ?>')">Blacklist</button></td>
             <?php endif; ?>
         </tr>
     <?php endforeach; ?>
 </table>
+<div id="fenetreBL" class="invisible">
+    <div id="contenuBL">
+        <span id="boutonFermerBL" onclick="fermerBL()">&times;</span>
+    </div>
+</div>
 <script type="text/javascript" src="../admin.js"></script>
+<style type="text/css" src="../fenetreBL.css"></style>
 <?php
 include "../footer.html"
 ?>

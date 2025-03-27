@@ -38,7 +38,9 @@ function banDeban(pseudo){
         if (!response.ok) {
             throw new Error(`Erreur HTTP : ${response.status}`);
         }
-        window.location.reload();
+        document.getElementById("ban" + pseudo).textContent = 
+            (document.getElementById("ban" + pseudo).textContent == "Bannir")? 
+            "Débannir" : "Bannir";
     })
     .catch(error => {
         console.error('Erreur lors du bannissement / débanissement :', error);
@@ -101,4 +103,18 @@ function supprimerUtilisateur(pseudo) {
     .catch(error => {
         console.error("Erreur lors de la suppression :", error);
     });
+}
+
+function fermerBL() {
+    document.getElementById('fenetreBL').className = 'invisible';
+}
+
+window.onclick = function(event) {
+	if (event.target.id == 'fenetreBL') {
+		fermerBL();
+	}
+}
+
+function ouvrirBL(pseudo) {
+    document.getElementById('fenetreBL').className = '';
 }
