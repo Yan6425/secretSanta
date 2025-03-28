@@ -76,6 +76,11 @@ button:hover {
     overflow: auto;
 }
 
+#titreBL {
+    display: inline-block;
+    font-weight: bold;
+}
+
 #boutonFermerBL {
     color: #aaa;
     float: right;

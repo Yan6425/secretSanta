@@ -2,9 +2,8 @@
 $participants = json_decode(file_get_contents("../../participants.json"), true);
 do {
     $tblPseudos = array_keys($participants);
-    $tblPseudos = array_values(array_diff($tblPseudos, ["Admin"]));
     foreach($participants as $pseudo => $infos) {
-        if ($infos["banni"]) {
+        if ($pseudo == "Admin" || $infos["banni"] || count($infos["blackList"]) >= count($tblPseudos)) {
             $tblPseudos = array_values(array_diff($tblPseudos, [$pseudo]));
         }
     }

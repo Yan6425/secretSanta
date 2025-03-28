@@ -29,7 +29,9 @@ include "../header.html"
 </table>
 <div id="fenetreBL" class="invisible">
     <div id="contenuBL">
+        <div id="titreBL"></div>
         <span id="boutonFermerBL" onclick="fermerBL()">&times;</span>
+        <table id="tblBlackList"></table>
     </div>
 </div>
 <script type="text/javascript" src="../admin.js"></script>

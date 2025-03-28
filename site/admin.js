@@ -116,5 +116,44 @@ window.onclick = function(event) {
 }
 
 function ouvrirBL(pseudo) {
-    document.getElementById('fenetreBL').className = '';
+    // Préparer les données au format POST
+    const data = new FormData();
+    data.append("pseudo", pseudo);
+    
+    // Envoi de la requête POST
+    fetch("../fonctions/tblBlackList.php", {
+        method: "POST",
+        body: data, // FormData gère l'encodage
+    })
+    .then(response => response.text())
+    .then(tblBlackList => {
+        document.getElementById('titreBL').innerText = "BlackList de " + pseudo;
+        document.getElementById('tblBlackList').innerHTML = tblBlackList;
+        document.getElementById('fenetreBL').className = '';
+    })
+    .catch(error => {
+        console.error("Erreur lors de l'ouverture de la blacklist :", error);
+    });
+}
+
+function modifBL(pseudoBL, pseudo){
+    // Préparer les données au format POST
+    const data = new FormData();
+    data.append("pseudoBL", pseudoBL);
+    data.append("pseudo", pseudo);
+
+    // Envoi de la requête POST
+    fetch("../fonctions/modifBL.php", {
+        method: "POST",
+        body: data, // FormData gère l'encodage
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+        ouvrirBL(pseudoBL);
+    })
+    .catch(error => {
+        console.error('Erreur lors du bannissement / débanissement :', error);
+    });
 }
