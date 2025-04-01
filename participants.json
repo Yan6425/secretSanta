@@ -25,7 +25,7 @@
     "Gabriel": {
         "mdp": "$2y$10$Q2KH38RDgImKnb8M9LHMiuGkzO\/ThzLOEp2ZcS3Bey2gB2SwRX3A.",
         "mail": "gabriel@secretSanta.fr",
-        "secretEnfant": "Alice",
+        "secretEnfant": "Sylvain",
         "blackList": [
             "Gabriel"
         ],
@@ -43,7 +43,7 @@
     "Ma\u00ebl": {
         "mdp": "$2y$10$GIH8j0uPv7A6Ucx97W5qyu4c\/cH9Xcfi7ilp1s6P\/I6DHiucCdu8a",
         "mail": "ma\u00ebl@secretSanta.fr",
-        "secretEnfant": "Sylvain",
+        "secretEnfant": "Alice",
         "blackList": [
             "Ma\u00ebl"
         ],

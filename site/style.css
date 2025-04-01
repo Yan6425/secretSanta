@@ -52,7 +52,7 @@ button:hover {
     color: green;
 }
 
-#fenetreBL {
+.fenetre {
     position: fixed;
     z-index: 1;
     left: 0;
@@ -63,7 +63,7 @@ button:hover {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-#contenuBL {
+.contenu {
     color: black;
     background-color: white;
     margin: 15% auto;
@@ -76,12 +76,12 @@ button:hover {
     overflow: auto;
 }
 
-#titreBL {
+.titre {
     display: inline-block;
     font-weight: bold;
 }
 
-#boutonFermerBL {
+.boutonFermer {
     color: #aaa;
     float: right;
     font-size: 28px;
@@ -89,8 +89,8 @@ button:hover {
     cursor: pointer;
 }
 
-#boutonFermerBL:hover,
-#boutonFermerBL:focus {
+.boutonFermer:hover,
+.boutonFermer:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;

@@ -9,6 +9,7 @@ include "../header.html"
 ?>
 <button onclick="lancerTirage()">Lancer tirage</button>
 <button onclick="annulerTirage()">Annuler tirage</button>
+<button onclick="ouvrirFenetreInscrire()">Inscrire</button>
 <table>
     <tr>
         <th>Pseudo</th>
@@ -28,10 +29,28 @@ include "../header.html"
     <?php endforeach; ?>
 </table>
 <div id="fenetreBL" class="invisible">
-    <div id="contenuBL">
-        <div id="titreBL"></div>
-        <span id="boutonFermerBL" onclick="fermerBL()">&times;</span>
+    <div id="contenuBL" class="contenu">
+        <div id="titreBL" class="titre"></div>
+        <span class="boutonFermer" onclick="fermerBL()">&times;</span>
         <table id="tblBlackList"></table>
+    </div>
+</div>
+<div id="fenetreInscrire" class="invisible">
+    <div id="contenuInscrire" class="contenu">
+        <div id="titreInscrire" class="titre">Inscription participant</div>
+        <span class="boutonFermer" onclick="fermerFenetreInscrire()">&times;</span>
+        <form id="formInscrire">
+                <label>Pseudo</label>
+                <input type="text" name="pseudo">
+                <br>
+                <label>Mot de passe</label>
+                <input type="password" name="mdp">
+                <br>
+                <label>Email</label>
+                <input type="email" name="mail">
+                <br>
+                <button type="submit" onclick="formInscrire()">Inscrire nouveau participant</button>
+            </form>
     </div>
 </div>
 <script type="text/javascript" src="../admin.js"></script>
