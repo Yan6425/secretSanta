@@ -24,6 +24,7 @@ include "../header.html"
                 <td><?= htmlspecialchars($infos['secretEnfant']) ?></td>
                 <td><button onclick="banDeban('<?= $pseudo ?>')" id="ban<?= $pseudo ?>"><?= $infos['banni'] ? 'Débannir' : 'Bannir' ?></button></td>
                 <td><button onclick="ouvrirBL('<?= $pseudo ?>')">Blacklist</button></td>
+                <td><button onclick="fenetreSupprimer('<?= $pseudo ?>')">Supprimer</button></td>
             <?php endif; ?>
         </tr>
     <?php endforeach; ?>
@@ -33,6 +34,13 @@ include "../header.html"
         <div id="titreBL" class="titre"></div>
         <span class="boutonFermer" onclick="fermerBL()">&times;</span>
         <table id="tblBlackList"></table>
+    </div>
+</div>
+<div id="fenetreSupprimer" class="invisible">
+    <div id="contenuSupprimer" class="contenu">
+        <div id="titreSupprimer" class="titre"></div>
+        <button onclick="fermerFenetreSupprimer()">Non</button>
+        <button id="confirmerSupprimer">Oui</button>
     </div>
 </div>
 <div id="fenetreInscrire" class="invisible">

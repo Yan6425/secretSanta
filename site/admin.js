@@ -32,7 +32,6 @@ function fermerFenetreInscrire(){
     document.getElementById("fenetreInscrire").className = "invisible";
 }
 
-
 async function formInscrire(){
     event.preventDefault();
     const data = new FormData(document.getElementById("formInscrire"));
@@ -72,7 +71,7 @@ function inscrire(pseudo, mdp, mail) {
         if (result === "true") {
             window.location.reload();
         } else {
-            console.log("Inscription échouée :", result);
+            console.error("Inscription échouée :", result);
         }
     })
     .catch(error => {
@@ -103,6 +102,16 @@ function banDeban(pseudo){
     });
 }
 
+function fermerFenetreSupprimer() {
+    document.getElementById("fenetreSupprimer").className = "invisible";
+}
+
+function fenetreSupprimer(pseudo) {
+    document.getElementById("fenetreSupprimer").className = "fenetre";
+    document.getElementById("titreSupprimer").textContent = "Êtes-vous sûr de supprimer " + pseudo;
+    document.getElementById("confirmerSupprimer").onclick = () => supprimerUtilisateur(pseudo);
+}
+
 function supprimerUtilisateur(pseudo) {
     // Préparer les données au format POST
     const data = new FormData();
@@ -121,7 +130,7 @@ function supprimerUtilisateur(pseudo) {
     })
     .then(result => {
         if (result === "true") {
-            console.log("Suppression réussie !");
+            window.location.reload();
         } else {
             console.log("Suppression échouée :", result);
         }
@@ -133,15 +142,6 @@ function supprimerUtilisateur(pseudo) {
 
 function fermerBL() {
     document.getElementById('fenetreBL').className = 'invisible';
-}
-
-window.onclick = function(event) {
-    if (event.target.id == 'fenetreBL') {
-        fermerBL();
-	}
-    else if (event.target.id == 'fenetreInscrire') {
-        fermerFenetreInscrire();
-    }
 }
 
 function ouvrirBL(pseudo) {
@@ -170,7 +170,7 @@ function modifBL(pseudoBL, pseudo){
     const data = new FormData();
     data.append("pseudoBL", pseudoBL);
     data.append("pseudo", pseudo);
-
+    
     // Envoi de la requête POST
     fetch("../fonctions/modifBL.php", {
         method: "POST",
@@ -185,4 +185,13 @@ function modifBL(pseudoBL, pseudo){
     .catch(error => {
         console.error('Erreur lors du bannissement / débanissement :', error);
     });
+}
+
+window.onclick = function(event) {
+    if (event.target.id == 'fenetreBL') {
+        fermerBL();
+    }
+    else if (event.target.id == 'fenetreInscrire') {
+        fermerFenetreInscrire();
+    }
 }
