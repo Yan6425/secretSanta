@@ -17,17 +17,29 @@ include "../header.html"
         <th>Secret enfant</th>
     </tr>
     <?php foreach ($participants as $pseudo => $infos): ?>
-        <tr>
-            <td><?= htmlspecialchars($pseudo) ?></td>
-            <td><?= htmlspecialchars($infos['mail']) ?></td>
-            <?php if ($pseudo != 'Admin'): ?>
+        <?php if ($pseudo == 'Admin' || !$infos["banni"]): ?>
+            <tr>
+                <td><?= htmlspecialchars($pseudo) ?></td>
+                <td><?= htmlspecialchars($infos['mail']) ?></td>
+                <?php if ($pseudo != 'Admin'): ?>
+                    <td><?= htmlspecialchars($infos['secretEnfant']) ?></td>
+                    <td><button onclick="banDeban('<?= $pseudo ?>')" id="ban<?= $pseudo ?>"><?= $infos['banni'] ? 'Débannir' : 'Bannir' ?></button></td>
+                    <td><button onclick="ouvrirBL('<?= $pseudo ?>')">Blacklist</button></td>
+                    <td><button onclick="fenetreMdp('<?= $pseudo ?>')">Changer mdp</button></td>
+                    <td><button onclick="fenetreSupprimer('<?= $pseudo ?>')">Supprimer</button></td>
+                <?php endif; ?>
+            </tr>
+        <?php endif; ?>
+    <?php endforeach; ?>
+    <?php foreach ($participants as $pseudo => $infos): ?>
+        <?php if ($infos["banni"]): ?>
+            <tr>
+                <td><?= htmlspecialchars($pseudo) ?></td>
+                <td><?= htmlspecialchars($infos['mail']) ?></td>
                 <td><?= htmlspecialchars($infos['secretEnfant']) ?></td>
                 <td><button onclick="banDeban('<?= $pseudo ?>')" id="ban<?= $pseudo ?>"><?= $infos['banni'] ? 'Débannir' : 'Bannir' ?></button></td>
-                <td><button onclick="ouvrirBL('<?= $pseudo ?>')">Blacklist</button></td>
-                <td><button onclick="fenetreMdp('<?= $pseudo ?>')">Changer mdp</button></td>
-                <td><button onclick="fenetreSupprimer('<?= $pseudo ?>')">Supprimer</button></td>
-            <?php endif; ?>
-        </tr>
+            </tr>
+        <?php endif; ?>
     <?php endforeach; ?>
 </table>
 <div id="fenetreInscrire" class="invisible">

@@ -89,9 +89,7 @@ function banDeban(pseudo){
         if (!response.ok) {
             throw new Error(`Erreur HTTP : ${response.status}`);
         }
-        document.getElementById("ban" + pseudo).textContent = 
-            (document.getElementById("ban" + pseudo).textContent == "Bannir")? 
-            "Débannir" : "Bannir";
+        window.location.reload();
     })
     .catch(error => {
         console.error('Erreur lors du bannissement / débanissement :', error);
