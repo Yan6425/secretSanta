@@ -12,7 +12,7 @@ include "../header.html"
     <button type="submit" onclick="connexion()">Connexion</button>
 </form>
 <a href="mdpOublie.php">Mot de passe oublie</a>
-<a href="inscription.php">inscription</a>
+<a href="inscription.php">Inscription</a>
 <?php
 include "../footer.html"
 ?>

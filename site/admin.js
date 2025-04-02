@@ -28,10 +28,6 @@ function ouvrirFenetreInscrire(){
     document.getElementById("fenetreInscrire").className = "fenetre";
 }
 
-function fermerFenetreInscrire(){
-    document.getElementById("fenetreInscrire").className = "invisible";
-}
-
 async function formInscrire(){
     event.preventDefault();
     const data = new FormData(document.getElementById("formInscrire"));
@@ -102,8 +98,53 @@ function banDeban(pseudo){
     });
 }
 
-function fermerFenetreSupprimer() {
-    document.getElementById("fenetreSupprimer").className = "invisible";
+function fenetreMdp(pseudo) {
+    document.getElementById("fenetreMdp").className = "fenetre";
+    document.getElementById("titreMdp").textContent = "Entrez le nouveau mot de passe pour " + pseudo;
+    document.getElementById("confirmerMdp").onclick = () => formMdp(pseudo);
+}
+
+async function formMdp(pseudo){
+    event.preventDefault();
+    const data = new FormData(document.getElementById("formMdp"));
+    const mdp = data.get("mdp");
+    const boolMdpValide = await mdpValide(mdp);
+    
+    if (boolMdpValide) {
+        changerMdp(pseudo, mdp);
+    }
+    else {
+        console.log("Mot de passe trop commun ou erreur innatendue.")
+    }
+}
+
+function changerMdp(pseudo, mdp) {
+    // Préparer les données au format POST
+    const data = new FormData(document.getElementById("formMdp"));
+    data.append("pseudo", pseudo);
+    data.append("mdp", mdp);
+    
+    // Envoi de la requête POST
+    fetch("../fonctions/changerMdp.php", {
+        method: "POST",
+        body: data, // FormData gère l'encodage
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+        return response.text();
+    })
+    .then(result => {
+        if (result === "true") {
+            window.location.reload();
+        } else {
+            console.error("Changement de mot de passe échoué :", result);
+        }
+    })
+    .catch(error => {
+        console.error("Erreur lors du changement :", error);
+    });
 }
 
 function fenetreSupprimer(pseudo) {
@@ -132,16 +173,12 @@ function supprimerUtilisateur(pseudo) {
         if (result === "true") {
             window.location.reload();
         } else {
-            console.log("Suppression échouée :", result);
+            console.error("Suppression échouée :", result);
         }
     })
     .catch(error => {
         console.error("Erreur lors de la suppression :", error);
     });
-}
-
-function fermerBL() {
-    document.getElementById('fenetreBL').className = 'invisible';
 }
 
 function ouvrirBL(pseudo) {
@@ -187,11 +224,12 @@ function modifBL(pseudoBL, pseudo){
     });
 }
 
+function fermerFenetre(id) {
+    document.getElementById(id).className = "invisible";
+}
+
 window.onclick = function(event) {
-    if (event.target.id == 'fenetreBL') {
-        fermerBL();
-    }
-    else if (event.target.id == 'fenetreInscrire') {
-        fermerFenetreInscrire();
+    if (event.target.className == "fenetre") {
+        fermerFenetre(event.target.id);
     }
 }
