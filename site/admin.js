@@ -32,6 +32,7 @@ function fermerFenetreInscrire(){
     document.getElementById("fenetreInscrire").className = "invisible";
 }
 
+
 async function formInscrire(){
     event.preventDefault();
     const data = new FormData(document.getElementById("formInscrire"));
@@ -40,7 +41,7 @@ async function formInscrire(){
     const mail = data.get('mail');
     const boolPseudoValide = await pseudoValide(pseudo);
     const boolMdpValide = await mdpValide(mdp);
-
+    
     if (boolPseudoValide && boolMdpValide){
         inscrire(pseudo, mdp, mail);
     }
@@ -83,7 +84,7 @@ function banDeban(pseudo){
     // Préparer les données au format POST
     const data = new FormData();
     data.append("pseudo", pseudo);
-
+    
     // Envoi de la requête POST
     fetch("../fonctions/bannirDebannir.php", {
         method: "POST",
@@ -106,7 +107,7 @@ function supprimerUtilisateur(pseudo) {
     // Préparer les données au format POST
     const data = new FormData();
     data.append("pseudo", pseudo);
-
+    
     // Envoi de la requête POST
     fetch("../fonctions/supprimerUtilisateur.php", {
         method: "POST",
@@ -135,9 +136,12 @@ function fermerBL() {
 }
 
 window.onclick = function(event) {
-	if (event.target.id == 'fenetreBL') {
-		fermerBL();
+    if (event.target.id == 'fenetreBL') {
+        fermerBL();
 	}
+    else if (event.target.id == 'fenetreInscrire') {
+        fermerFenetreInscrire();
+    }
 }
 
 function ouvrirBL(pseudo) {
@@ -154,7 +158,7 @@ function ouvrirBL(pseudo) {
     .then(tblBlackList => {
         document.getElementById('titreBL').innerText = "BlackList de " + pseudo;
         document.getElementById('tblBlackList').innerHTML = tblBlackList;
-        document.getElementById('fenetreBL').className = '';
+        document.getElementById('fenetreBL').className = "fenetre";
     })
     .catch(error => {
         console.error("Erreur lors de l'ouverture de la blacklist :", error);

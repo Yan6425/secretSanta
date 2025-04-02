@@ -16,7 +16,7 @@
     "Alice": {
         "mdp": "$2y$10$REZSMBLZweZ0FpFIcGicgOHPEDWWA0rnC56qzZ8hQvBxjOyODMCWu",
         "mail": "alice@secretSanta.fr",
-        "secretEnfant": "Ma\u00ebl",
+        "secretEnfant": null,
         "blackList": [
             "Alice"
         ],
@@ -25,7 +25,7 @@
     "Gabriel": {
         "mdp": "$2y$10$Q2KH38RDgImKnb8M9LHMiuGkzO\/ThzLOEp2ZcS3Bey2gB2SwRX3A.",
         "mail": "gabriel@secretSanta.fr",
-        "secretEnfant": "Sylvain",
+        "secretEnfant": null,
         "blackList": [
             "Gabriel"
         ],
@@ -34,7 +34,7 @@
     "Sylvain": {
         "mdp": "$2y$10$lmhCCIVERtYMVxegQNVhteg8eyh45Td2PPuhfpS3W9nejW98ouaY6",
         "mail": "Sylvain@secretSanta.fr",
-        "secretEnfant": "Gabriel",
+        "secretEnfant": null,
         "blackList": [
             "Sylvain"
         ],
@@ -43,7 +43,7 @@
     "Ma\u00ebl": {
         "mdp": "$2y$10$GIH8j0uPv7A6Ucx97W5qyu4c\/cH9Xcfi7ilp1s6P\/I6DHiucCdu8a",
         "mail": "ma\u00ebl@secretSanta.fr",
-        "secretEnfant": "Alice",
+        "secretEnfant": null,
         "blackList": [
             "Ma\u00ebl"
         ],
