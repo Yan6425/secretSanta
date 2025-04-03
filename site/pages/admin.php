@@ -23,7 +23,7 @@ include "../header.html"
                 <td><?= htmlspecialchars($infos['mail']) ?></td>
                 <?php if ($pseudo != 'Admin'): ?>
                     <td><?= htmlspecialchars($infos['secretEnfant']) ?></td>
-                    <td><button onclick="banDeban('<?= $pseudo ?>')" id="ban<?= $pseudo ?>"><?= $infos['banni'] ? 'Débannir' : 'Bannir' ?></button></td>
+                    <td><button onclick="banDeban('<?= $pseudo ?>')">Bannir</button></td>
                     <td><button onclick="ouvrirBL('<?= $pseudo ?>')">Blacklist</button></td>
                     <td><button onclick="fenetreMdp('<?= $pseudo ?>')">Changer mdp</button></td>
                     <td><button onclick="fenetreSupprimer('<?= $pseudo ?>')">Supprimer</button></td>
@@ -37,7 +37,7 @@ include "../header.html"
                 <td><?= htmlspecialchars($pseudo) ?></td>
                 <td><?= htmlspecialchars($infos['mail']) ?></td>
                 <td><?= htmlspecialchars($infos['secretEnfant']) ?></td>
-                <td><button onclick="banDeban('<?= $pseudo ?>')" id="ban<?= $pseudo ?>"><?= $infos['banni'] ? 'Débannir' : 'Bannir' ?></button></td>
+                <td><button onclick="banDeban('<?= $pseudo ?>')">Débannir</button></td>
             </tr>
         <?php endif; ?>
     <?php endforeach; ?>
