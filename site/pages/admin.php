@@ -40,7 +40,7 @@ include "../header.html"
             <td><?= htmlspecialchars($pseudo) ?></td>
             <td><?= htmlspecialchars($infos['mail']) ?></td>
             <td></td>
-            <td><button onclick="Activer('<?= $pseudo ?>')">Activer</button></td>
+            <td><button onclick="activer('<?= $pseudo ?>')">Activer</button></td>
         </tr>
     <?php endforeach; ?>
     <?php foreach ($bannis as $pseudo => $infos): ?>

@@ -106,6 +106,49 @@ function banDeban(pseudo){
     });
 }
 
+function ouvrirBL(pseudo) {
+    // Préparer les données au format POST
+    const data = new FormData();
+    data.append("pseudo", pseudo);
+    
+    // Envoi de la requête POST
+    fetch("../fonctions/tblBlackList.php", {
+        method: "POST",
+        body: data, // FormData gère l'encodage
+    })
+    .then(response => response.text())
+    .then(tblBlackList => {
+        document.getElementById('titreBL').innerText = "BlackList de " + pseudo;
+        document.getElementById('tblBlackList').innerHTML = tblBlackList;
+        document.getElementById('fenetreBL').className = "fenetre";
+    })
+    .catch(error => {
+        console.error("Erreur lors de l'ouverture de la blacklist :", error);
+    });
+}
+
+function modifBL(pseudoBL, pseudo){
+    // Préparer les données au format POST
+    const data = new FormData();
+    data.append("pseudoBL", pseudoBL);
+    data.append("pseudo", pseudo);
+    
+    // Envoi de la requête POST
+    fetch("../fonctions/modifBL.php", {
+        method: "POST",
+        body: data, // FormData gère l'encodage
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+        ouvrirBL(pseudoBL);
+    })
+    .catch(error => {
+        console.error('Erreur lors du bannissement / débanissement :', error);
+    });
+}
+
 function fenetreMdp(pseudo) {
     document.getElementById("fenetreMdp").className = "fenetre";
     document.getElementById("titreMdp").textContent = "Entrez le nouveau mot de passe pour " + pseudo;
@@ -189,49 +232,6 @@ function supprimerUtilisateur(pseudo) {
     });
 }
 
-function ouvrirBL(pseudo) {
-    // Préparer les données au format POST
-    const data = new FormData();
-    data.append("pseudo", pseudo);
-    
-    // Envoi de la requête POST
-    fetch("../fonctions/tblBlackList.php", {
-        method: "POST",
-        body: data, // FormData gère l'encodage
-    })
-    .then(response => response.text())
-    .then(tblBlackList => {
-        document.getElementById('titreBL').innerText = "BlackList de " + pseudo;
-        document.getElementById('tblBlackList').innerHTML = tblBlackList;
-        document.getElementById('fenetreBL').className = "fenetre";
-    })
-    .catch(error => {
-        console.error("Erreur lors de l'ouverture de la blacklist :", error);
-    });
-}
-
-function modifBL(pseudoBL, pseudo){
-    // Préparer les données au format POST
-    const data = new FormData();
-    data.append("pseudoBL", pseudoBL);
-    data.append("pseudo", pseudo);
-    
-    // Envoi de la requête POST
-    fetch("../fonctions/modifBL.php", {
-        method: "POST",
-        body: data, // FormData gère l'encodage
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Erreur HTTP : ${response.status}`);
-        }
-        ouvrirBL(pseudoBL);
-    })
-    .catch(error => {
-        console.error('Erreur lors du bannissement / débanissement :', error);
-    });
-}
-
 function fermerFenetre(id) {
     document.getElementById(id).className = "invisible";
 }
@@ -240,4 +240,25 @@ window.onclick = function(event) {
     if (event.target.className == "fenetre") {
         fermerFenetre(event.target.id);
     }
+}
+
+function activer(pseudo){
+    // Préparer les données au format POST
+    const data = new FormData();
+    data.append("pseudo", pseudo);
+    
+    // Envoi de la requête POST
+    fetch("../fonctions/activer.php", {
+        method: "POST",
+        body: data, // FormData gère l'encodage
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+        window.location.reload();
+    })
+    .catch(error => {
+        console.error("Erreur lors de l'activation de l'utilisateur :", error);
+    });
 }
