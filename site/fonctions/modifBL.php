@@ -1,5 +1,5 @@
 <?php
-$participants = json_decode(file_get_contents("../../actifs.json"), true);
+$participants = json_decode(file_get_contents("../../participants.json"), true);
 $actifs = $participants["actifs"];
 if (isset($_POST["pseudoBL"]) && isset($_POST["pseudo"]) &&     //vérifie que les identifiants sont définis
     isset($actifs[$_POST["pseudoBL"]]) &&                                  
@@ -16,7 +16,7 @@ if (isset($_POST["pseudoBL"]) && isset($_POST["pseudo"]) &&     //vérifie que l
             array_push($actifs[$_POST["pseudoBL"]]["blackList"], $_POST["pseudo"]);
         }
         $participants["actifs"] = $actifs;
-        file_put_contents("../../actifs.json", json_encode($participants, JSON_PRETTY_PRINT));
+        file_put_contents("../../participants.json", json_encode($participants, JSON_PRETTY_PRINT));
         echo "true";
 }
 else{

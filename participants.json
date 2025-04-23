@@ -28,14 +28,6 @@
                 "Sylvain"
             ]
         },
-        "Ma\u00ebl": {
-            "mdp": "$2y$10$GIH8j0uPv7A6Ucx97W5qyu4c\/cH9Xcfi7ilp1s6P\/I6DHiucCdu8a",
-            "mail": "ma\u00ebl@secretSanta.fr",
-            "secretEnfant": null,
-            "blackList": [
-                "Ma\u00ebl"
-            ]
-        },
         "Quentin": {
             "mdp": "$2y$10$56kuFyIH3O8ItvFD4YxTTO5QlGOd661pt8KQKj9feTUfXnMGBWBjS",
             "mail": "quentin@secretSanta.fr",
@@ -47,6 +39,14 @@
                 "Gabriel",
                 "Alice",
                 "Bob"
+            ]
+        },
+        "Ma\u00ebl": {
+            "mdp": "$2y$10$GIH8j0uPv7A6Ucx97W5qyu4c\/cH9Xcfi7ilp1s6P\/I6DHiucCdu8a",
+            "mail": "ma\u00ebl@secretSanta.fr",
+            "secretEnfant": null,
+            "blackList": [
+                "Ma\u00ebl"
             ]
         }
     },
