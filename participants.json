@@ -3,64 +3,63 @@
         "mdp": "$2y$10$tGOD2xkfZrXKB3SzQ3EBkeSKsSLgOXpuxdVIYZzgx.iCVxPQ6II6a",
         "mail": "admin@secretSanta.fr"
     },
-    "Bob": {
-        "mdp": "$2y$10$.CWRuCzcA92Hkut6DTiTVeyk7EfACuzE9asIyz9eqpElQROwiI5H6",
-        "mail": "bob@secretSanta.fr",
-        "secretEnfant": null,
-        "blackList": [
-            "Bob",
-            "Alice"
-        ],
-        "banni": true
+    "actifs": {
+        "Alice": {
+            "mdp": "$2y$10$WuAZ597f.z64Y3mR7.ZibObQ11ldXidtBD0GJvprsfQLHKJfvNxW2",
+            "mail": "alice@secretSanta.fr",
+            "secretEnfant": null,
+            "blackList": [
+                "Alice"
+            ]
+        },
+        "Gabriel": {
+            "mdp": "$2y$10$q5N5R4h3NxP627bDq52rRuq4n6WmqE.deXpfoVkj9fNhyOyqxyVfi",
+            "mail": "gabriel@secretSanta.fr",
+            "secretEnfant": null,
+            "blackList": [
+                "Gabriel"
+            ]
+        },
+        "Sylvain": {
+            "mdp": "$2y$10$lmhCCIVERtYMVxegQNVhteg8eyh45Td2PPuhfpS3W9nejW98ouaY6",
+            "mail": "Sylvain@secretSanta.fr",
+            "secretEnfant": null,
+            "blackList": [
+                "Sylvain"
+            ]
+        },
+        "Ma\u00ebl": {
+            "mdp": "$2y$10$GIH8j0uPv7A6Ucx97W5qyu4c\/cH9Xcfi7ilp1s6P\/I6DHiucCdu8a",
+            "mail": "ma\u00ebl@secretSanta.fr",
+            "secretEnfant": null,
+            "blackList": [
+                "Ma\u00ebl"
+            ]
+        },
+        "Quentin": {
+            "mdp": "$2y$10$56kuFyIH3O8ItvFD4YxTTO5QlGOd661pt8KQKj9feTUfXnMGBWBjS",
+            "mail": "quentin@secretSanta.fr",
+            "secretEnfant": null,
+            "blackList": [
+                "Quentin",
+                "Ma\u00ebl",
+                "Sylvain",
+                "Gabriel",
+                "Alice",
+                "Bob"
+            ]
+        }
     },
-    "Alice": {
-        "mdp": "$2y$10$WuAZ597f.z64Y3mR7.ZibObQ11ldXidtBD0GJvprsfQLHKJfvNxW2",
-        "mail": "alice@secretSanta.fr",
-        "secretEnfant": null,
-        "blackList": [
-            "Alice"
-        ],
-        "banni": false
+    "bannis": {
+        "Bob": {
+            "mdp": "$2y$10$.CWRuCzcA92Hkut6DTiTVeyk7EfACuzE9asIyz9eqpElQROwiI5H6",
+            "mail": "bob@secretSanta.fr",
+            "secretEnfant": null,
+            "blackList": [
+                "Bob",
+                "Alice"
+            ]
+        }
     },
-    "Gabriel": {
-        "mdp": "$2y$10$q5N5R4h3NxP627bDq52rRuq4n6WmqE.deXpfoVkj9fNhyOyqxyVfi",
-        "mail": "gabriel@secretSanta.fr",
-        "secretEnfant": null,
-        "blackList": [
-            "Gabriel"
-        ],
-        "banni": false
-    },
-    "Sylvain": {
-        "mdp": "$2y$10$lmhCCIVERtYMVxegQNVhteg8eyh45Td2PPuhfpS3W9nejW98ouaY6",
-        "mail": "Sylvain@secretSanta.fr",
-        "secretEnfant": null,
-        "blackList": [
-            "Sylvain"
-        ],
-        "banni": false
-    },
-    "Ma\u00ebl": {
-        "mdp": "$2y$10$GIH8j0uPv7A6Ucx97W5qyu4c\/cH9Xcfi7ilp1s6P\/I6DHiucCdu8a",
-        "mail": "ma\u00ebl@secretSanta.fr",
-        "secretEnfant": null,
-        "blackList": [
-            "Ma\u00ebl"
-        ],
-        "banni": false
-    },
-    "Quentin": {
-        "mdp": "$2y$10$56kuFyIH3O8ItvFD4YxTTO5QlGOd661pt8KQKj9feTUfXnMGBWBjS",
-        "mail": "quentin@secretSanta.fr",
-        "secretEnfant": null,
-        "blackList": [
-            "Quentin",
-            "Ma\u00ebl",
-            "Sylvain",
-            "Gabriel",
-            "Alice",
-            "Bob"
-        ],
-        "banni": false
-    }
+    "aActiver": []
 }

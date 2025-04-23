@@ -4,11 +4,15 @@ if (!isset($_SESSION["pseudo"]) || $_SESSION["pseudo"] != "Admin"){
     header("Location: ../index.php");
 }
 $participants = json_decode(file_get_contents('../../participants.json'), true);
+$admin = $participants["Admin"];
+$actifs = $participants["actifs"];
+$bannis = $participants["bannis"];
+$aActiver = $participants["aActiver"];
 
 include "../header.html"
 ?>
-<button onclick="lancerTirage()">Lancer tirage</button>
-<button onclick="annulerTirage()">Annuler tirage</button>
+<button onclick="boutonLancerTirage()">Lancer tirage</button>
+<button onclick="boutonAnnulerTirage()">Annuler tirage</button>
 <button onclick="ouvrirFenetreInscrire()">Inscrire</button>
 <table>
     <tr>
@@ -16,30 +20,36 @@ include "../header.html"
         <th>Email</th>
         <th>Secret enfant</th>
     </tr>
-    <?php foreach ($participants as $pseudo => $infos): ?>
-        <?php if ($pseudo == 'Admin' || !$infos["banni"]): ?>
-            <tr>
-                <td><?= htmlspecialchars($pseudo) ?></td>
-                <td><?= htmlspecialchars($infos['mail']) ?></td>
-                <?php if ($pseudo != 'Admin'): ?>
-                    <td><?= htmlspecialchars($infos['secretEnfant']) ?></td>
-                    <td><button onclick="banDeban('<?= $pseudo ?>')">Bannir</button></td>
-                    <td><button onclick="ouvrirBL('<?= $pseudo ?>')">Blacklist</button></td>
-                    <td><button onclick="fenetreMdp('<?= $pseudo ?>')">Changer mdp</button></td>
-                    <td><button onclick="fenetreSupprimer('<?= $pseudo ?>')">Supprimer</button></td>
-                <?php endif; ?>
-            </tr>
-        <?php endif; ?>
+    <tr>
+        <td>Admin</td>
+        <td><?= htmlspecialchars($admin['mail']) ?></td>
+    </tr>
+    <?php foreach ($actifs as $pseudo => $infos): ?>
+        <tr>
+            <td><?= htmlspecialchars($pseudo) ?></td>
+            <td><?= htmlspecialchars($infos['mail']) ?></td>
+            <td><?= htmlspecialchars($infos['secretEnfant']) ?></td>
+            <td><button onclick="banDeban('<?= $pseudo ?>')">Bannir</button></td>
+            <td><button onclick="ouvrirBL('<?= $pseudo ?>')">Blacklist</button></td>
+            <td><button onclick="fenetreMdp('<?= $pseudo ?>')">Changer mdp</button></td>
+            <td><button onclick="fenetreSupprimer('<?= $pseudo ?>')">Supprimer</button></td>
+        </tr>
     <?php endforeach; ?>
-    <?php foreach ($participants as $pseudo => $infos): ?>
-        <?php if ($infos["banni"]): ?>
-            <tr>
-                <td><?= htmlspecialchars($pseudo) ?></td>
-                <td><?= htmlspecialchars($infos['mail']) ?></td>
-                <td><?= htmlspecialchars($infos['secretEnfant']) ?></td>
-                <td><button onclick="banDeban('<?= $pseudo ?>')">Débannir</button></td>
-            </tr>
-        <?php endif; ?>
+    <?php foreach ($aActiver as $pseudo => $infos): ?>
+        <tr>
+            <td><?= htmlspecialchars($pseudo) ?></td>
+            <td><?= htmlspecialchars($infos['mail']) ?></td>
+            <td></td>
+            <td><button onclick="Activer('<?= $pseudo ?>')">Activer</button></td>
+        </tr>
+    <?php endforeach; ?>
+    <?php foreach ($bannis as $pseudo => $infos): ?>
+        <tr>
+            <td><?= htmlspecialchars($pseudo) ?></td>
+            <td><?= htmlspecialchars($infos['mail']) ?></td>
+            <td><?= htmlspecialchars($infos['secretEnfant']) ?></td>
+            <td><button onclick="banDeban('<?= $pseudo ?>')">Débannir</button></td>
+        </tr>
     <?php endforeach; ?>
 </table>
 <div id="fenetreInscrire" class="invisible">

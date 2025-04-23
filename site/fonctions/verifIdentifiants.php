@@ -1,17 +1,37 @@
 <?php
 $participants = json_decode(file_get_contents("../../participants.json"), true);
-if (password_needs_rehash($participants[$_POST["pseudo"]]["mdp"], PASSWORD_DEFAULT)){
-    $participants[$_POST["pseudo"]]["mdp"] = password_hash($participants[$_POST["pseudo"]]["mdp"], PASSWORD_DEFAULT);
+$reussite = false;
+
+if (isset($_POST["pseudo"]) && isset($_POST["mdp"])) {
+    $pseudo = $_POST["pseudo"];
+    $mdp = $_POST["mdp"];
+
+    if ($pseudo === "Admin") {
+        $utilisateur = $participants["Admin"];
+    } else if (isset($participants["actifs"][$pseudo])) {
+        $utilisateur = $participants["actifs"][$pseudo];
+    } else {
+        $utilisateur = null;
+    }
+
+    if ($utilisateur) {
+        if (password_needs_rehash($utilisateur["mdp"], PASSWORD_DEFAULT)) {
+            $utilisateur["mdp"] = password_hash($utilisateur["mdp"], PASSWORD_DEFAULT);
+            if ($pseudo === "Admin") {
+                $participants["Admin"] = $utilisateur;
+            } else {
+                $participants["actifs"][$pseudo] = $utilisateur;
+            }
+            file_put_contents("../../participants.json", json_encode($participants, JSON_PRETTY_PRINT));
+        }
+
+        if (password_verify($mdp, $utilisateur["mdp"])) {
+            session_start();
+            $_SESSION["pseudo"] = $pseudo;
+            $reussite = true;
+        }
+    }
 }
-if (isset($_POST["pseudo"]) && isset($_POST["mdp"])                     //vérifie que les identifiants sont définis
-    && array_key_exists($_POST["pseudo"], $participants)                //vérifie que l'utilisateur existe
-    && !$participants[$_POST["pseudo"]]["banni"]                        //vérifie que l'utilisateur n'est pas banni
-    && password_verify($_POST["mdp"], $participants[$_POST["pseudo"]]["mdp"])){        //vérifie que le mot de passe est correct
-        session_start();
-        $_SESSION["pseudo"] = $_POST["pseudo"];
-        echo "true";
-}
-else{
-    echo "false";
-}
+
+echo $reussite ? "true" : "false";
 ?>

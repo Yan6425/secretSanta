@@ -1,12 +1,24 @@
 <?php
 $participants = json_decode(file_get_contents("../../participants.json"), true);
-if (isset($_POST["pseudo"])                                         //vérifie que les identifiants sont définis
-    && array_key_exists($_POST["pseudo"], $participants)){          //vérifie que l'utilisateur existe
-        $participants[$_POST["pseudo"]]["banni"] = !$participants[$_POST["pseudo"]]["banni"];
+$actifs = $participants["actifs"];
+$bannis = $participants["bannis"];
+$reussite = false;
+if (isset($_POST["pseudo"])){
+    if (isset($actifs[$_POST["pseudo"]])) {
+        $bannis[$_POST["pseudo"]] = $actifs[$_POST["pseudo"]];
+        unset($actifs[$_POST["pseudo"]]);
+        $reussite = true;
+    }
+    else if (isset($bannis[$_POST["pseudo"]])) {
+        $actifs[$_POST["pseudo"]] = $bannis[$_POST["pseudo"]];
+        unset($bannis[$_POST["pseudo"]]);
+        $reussite = true;
+    }
+    if ($reussite) {
+        $participants["actifs"] = $actifs;
+        $participants["bannis"] = $bannis;
         file_put_contents("../../participants.json", json_encode($participants, JSON_PRETTY_PRINT));
-        echo "true";
+    }
 }
-else{
-    echo "false";
-}
+echo $reussite ? "true" : "false";
 ?>

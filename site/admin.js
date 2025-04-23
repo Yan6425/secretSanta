@@ -1,28 +1,38 @@
-function lancerTirage(){
-    fetch("../fonctions/lancerTirage.php")
+async function boutonAnnulerTirage() {
+    await annulerTirage();
+    window.location.reload();
+}
+
+async function annulerTirage(){
+    await fetch("../fonctions/annulerTirage.php")
     .then(response => {
         if (!response.ok) {
             throw new Error(`Erreur HTTP : ${response.status}`);
         }
-        window.location.reload();
     })
     .catch(error => {
         console.error('Erreur lors du tirage :', error);
     });
 }
 
-function annulerTirage(){
-    fetch("../fonctions/annulerTirage.php")
+async function boutonLancerTirage() {
+    await annulerTirage();
+    await lancerTirage();
+    window.location.reload();
+}
+
+async function lancerTirage(){
+    await annulerTirage();
+    await fetch("../fonctions/lancerTirage.php")
     .then(response => {
         if (!response.ok) {
             throw new Error(`Erreur HTTP : ${response.status}`);
-        }
-        window.location.reload();
-    })
+        }    
+    })    
     .catch(error => {
         console.error('Erreur lors du tirage :', error);
-    });
-}
+    });    
+}    
 
 function ouvrirFenetreInscrire(){
     document.getElementById("fenetreInscrire").className = "fenetre";
